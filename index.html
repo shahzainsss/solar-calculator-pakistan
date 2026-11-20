@@ -127,5 +127,15 @@ document.getElementById('payback').innerText = payback + " Years";
 document.getElementById('result').style.display='block';
 }
 </script>
+  <script>
+// © Shahzain Usman - SolarPak Protection
+document.addEventListener('contextmenu', e => e.preventDefault());
+setInterval(()=>{
+  let f = document.querySelector('.footer');
+  if(!f || !f.innerHTML.includes('Shahzain Shamsi')){
+    document.body.innerHTML = '<h1 style="color:white;text-align:center;margin-top:100px">This Website is Owned by Shahzain Usman<br>SolarPak Pakistan</h1>';
+  }
+}, 2000);
+</script>
 </body>
 </html>
