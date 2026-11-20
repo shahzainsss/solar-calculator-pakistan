@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Solar Calculator Pakistan</title>
+<style>
+body{font-family:Arial;background:#fff7e6;margin:0;padding:20px}
+.box{max-width:450px;margin:auto;background:white;padding:25px;border-radius:15px;box-shadow:0 5px 20px #ccc}
+h1{text-align:center;color:#e67e00}
+label{font-weight:bold}
+input,select{width:100%;padding:12px;margin:8px 0 15px 0;border:1px solid #ddd;border-radius:8px;font-size:16px}
+button{width:100%;padding:14px;background:#ff8c00;color:white;border:none;border-radius:8px;font-size:18px;cursor:pointer}
+.result{margin-top:20px;background:#e8f8e8;padding:15px;border-radius:10px;display:none}
+.result p{margin:6px 0;font-size:17px}
+</style>
+</head>
+<body>
+<div class="box">
+<h1>☀️ Solar Calculator Pakistan</h1>
+<p style="text-align:center">By Shahzain Shamsi</p>
+
+<label>Monthly Bijli Bill (Rs)</label>
+<input type="number" id="bill" placeholder="e.g. 20000">
+
+<label>Monthly Units (kWh)</label>
+<input type="number" id="units" placeholder="e.g. 500">
+
+<label>City</label>
+<select id="city">
+<option value="5.5">Karachi</option>
+<option value="5.2">Lahore</option>
+<option value="5.0">Islamabad</option>
+<option value="5.8">Quetta</option>
+<option value="5.3">Hyderabad</option>
+</select>
+
+<button onclick="calculate()">Calculate Solar System</button>
+
+<div class="result" id="result">
+<p><b>Recommended System:</b> <span id="kw"></span> kW</p>
+<p><b>Solar Panels Needed:</b> <span id="panels"></span> Panels (585W)</p>
+<p><b>Estimated Cost:</b> Rs <span id="cost"></span></p>
+<p><b>Monthly Saving:</b> Rs <span id="saving"></span></p>
+<p><b>Payback Time:</b> <span id="payback"></span> Years</p>
+</div>
+</div>
+
+<script>
+function calculate(){
+let bill = document.getElementById('bill').value;
+let units = document.getElementById('units').value;
+if(!bill || !units){alert('Bill aur Units dalo bhai!');return;}
+let kw = (units / 120).toFixed(1);
+let panels = Math.ceil(kw * 1000 / 585);
+let cost = Math.round(kw * 210000);
+let saving = Math.round(bill * 0.90);
+let payback = (cost / (saving*12)).toFixed(1);
+document.getElementById('kw').innerText = kw;
+document.getElementById('panels').innerText = panels;
+document.getElementById('cost').innerText = cost.toLocaleString();
+document.getElementById('saving').innerText = saving.toLocaleString();
+document.getElementById('payback').innerText = payback;
+document.getElementById('result').style.display='block';
+}
+</script>
+</body>
+</html>
