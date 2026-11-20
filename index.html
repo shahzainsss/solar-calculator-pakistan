@@ -3,64 +3,127 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Solar Calculator Pakistan</title>
+<title>Solar Calculator Pakistan | Shahzain Usman</title>
 <style>
-body{font-family:Arial;background:#fff7e6;margin:0;padding:20px}
-.box{max-width:450px;margin:auto;background:white;padding:25px;border-radius:15px;box-shadow:0 5px 20px #ccc}
-h1{text-align:center;color:#e67e00}
-label{font-weight:bold}
-input,select{width:100%;padding:12px;margin:8px 0 15px 0;border:1px solid #ddd;border-radius:8px;font-size:16px}
-button{width:100%;padding:14px;background:#ff8c00;color:white;border:none;border-radius:8px;font-size:18px;cursor:pointer}
-.result{margin-top:20px;background:#e8f8e8;padding:15px;border-radius:10px;display:none}
-.result p{margin:6px 0;font-size:17px}
+*{box-sizing:border-box}
+body{font-family:'Segoe UI',Arial;background:#0a0a0a;margin:0;padding:15px;color:#fff}
+.box{max-width:520px;margin:auto;background:#111;border:2px solid #d4af37;padding:25px;border-radius:18px;box-shadow:0 0 30px rgba(212,175,55,0.3)}
+.logo{text-align:center;margin-bottom:5px}
+.logo h1{margin:0;font-size:32px;color:#d4af37;letter-spacing:1px}
+.logo h1 span{color:#e11d2e}
+.logo p{color:#aaa;font-size:13px;margin:5px 0 20px 0;letter-spacing:2px}
+label{font-weight:bold;color:#d4af37;font-size:14px}
+input,select{width:100%;padding:13px;margin:8px 0 15px 0;border:1px solid #333;background:#1a1a1a;color:white;border-radius:10px;font-size:16px}
+select option{background:#111}
+.sys{display:flex;gap:8px;margin:8px 0 15px 0}
+.sys label{flex:1;text-align:center;background:#1a1a1a;border:1px solid #333;padding:12px 5px;border-radius:10px;cursor:pointer;font-size:13px;color:#ccc}
+.sys input{display:none}
+.sys input:checked + span{color:#d4af37}
+.sys label:has(input:checked){border-color:#d4af37;background:#222}
+button{width:100%;padding:15px;background:linear-gradient(90deg,#e11d2e,#b3001b);color:white;border:none;border-radius:10px;font-size:18px;font-weight:bold;cursor:pointer}
+button:hover{opacity:0.9}
+.result{margin-top:20px;background:#1a1a1a;border:1px solid #d4af37;padding:18px;border-radius:12px;display:none}
+.result h3{color:#d4af37;margin-top:0;text-align:center}
+.result p{margin:8px 0;font-size:16px;display:flex;justify-content:space-between;border-bottom:1px dashed #333;padding-bottom:6px}
+.result p b{color:#fff}
+.result p span{color:#d4af37;font-weight:bold}
+.note{margin-top:15px;text-align:center;font-size:12px;color:#888;line-height:1.5}
+.footer{text-align:center;margin-top:15px;font-size:12px;color:#666}
 </style>
 </head>
 <body>
 <div class="box">
-<h1>☀️ Solar Calculator Pakistan</h1>
-<p style="text-align:center">By Shahzain Shamsi</p>
+<div class="logo">
+<h1>⚡ SOLAR<span>PAK</span></h1>
+<p>CALCULATOR • PAKISTAN</p>
+</div>
 
 <label>Monthly Bijli Bill (Rs)</label>
-<input type="number" id="bill" placeholder="e.g. 20000">
+<input type="number" id="bill" placeholder="e.g. 25000">
 
 <label>Monthly Units (kWh)</label>
-<input type="number" id="units" placeholder="e.g. 500">
+<input type="number" id="units" placeholder="e.g. 600">
 
-<label>City</label>
+<label>Select Your City</label>
 <select id="city">
 <option value="5.5">Karachi</option>
 <option value="5.2">Lahore</option>
 <option value="5.0">Islamabad</option>
+<option value="5.1">Rawalpindi</option>
 <option value="5.8">Quetta</option>
 <option value="5.3">Hyderabad</option>
+<option value="5.4">Multan</option>
+<option value="5.3">Faisalabad</option>
+<option value="5.2">Peshawar</option>
+<option value="4.8">Abbottabad</option>
+<option value="5.0">Mardan</option>
+<option value="5.1">Swat</option>
+<option value="5.6">Sukkur</option>
+<option value="5.5">Larkana</option>
+<option value="5.4">Bahawalpur</option>
+<option value="5.2">Sialkot</option>
+<option value="5.2">Gujranwala</option>
+<option value="5.1">Sargodha</option>
+<option value="5.6">Rahim Yar Khan</option>
+<option value="5.7">Jacobabad</option>
+<option value="5.0">Murree</option>
+<option value="4.9">Gilgit</option>
+<option value="5.2">Skardu</option>
+<option value="5.0">Muzaffarabad</option>
+<option value="5.3">Dera Ghazi Khan</option>
+<option value="5.4">Dera Ismail Khan</option>
+<option value="5.2">Jhelum</option>
+<option value="5.1">Attock</option>
+<option value="5.3">Sahiwal</option>
+<option value="5.4">Okara</option>
 </select>
 
-<button onclick="calculate()">Calculate Solar System</button>
+<label>Select System Type</label>
+<div class="sys">
+<label><input type="radio" name="type" value="ongrid" checked><span>⚡ On-Grid</span></label>
+<label><input type="radio" name="type" value="hybrid"><span>🔋 Hybrid</span></label>
+<label><input type="radio" name="type" value="offgrid"><span>🌙 Off-Grid</span></label>
+</div>
+
+<button onclick="calculate()">CALCULATE SOLAR SYSTEM</button>
 
 <div class="result" id="result">
-<p><b>Recommended System:</b> <span id="kw"></span> kW</p>
-<p><b>Solar Panels Needed:</b> <span id="panels"></span> Panels (585W)</p>
-<p><b>Estimated Cost:</b> Rs <span id="cost"></span></p>
-<p><b>Monthly Saving:</b> Rs <span id="saving"></span></p>
-<p><b>Payback Time:</b> <span id="payback"></span> Years</p>
+<h3 id="sysName">Your Solar Plan</h3>
+<p><b>Recommended System:</b> <span id="kw"></span></p>
+<p><b>Solar Panels (585W):</b> <span id="panels"></span></p>
+<p><b>Inverter Size:</b> <span id="inv"></span></p>
+<p><b>Estimated Cost:</b> <span id="cost"></span></p>
+<p><b>Monthly Saving:</b> <span id="saving"></span></p>
+<p><b>Payback Time:</b> <span id="payback"></span></p>
 </div>
+
+<p class="note">⚠️ Note: This is the estimate rate, not accurate. Actual price may vary according to market rate, panel brand, inverter, wiring and installation site.</p>
+<div class="footer">Designed by Shahzain Shamsi | SolarPak Pakistan</div>
 </div>
 
 <script>
 function calculate(){
 let bill = document.getElementById('bill').value;
 let units = document.getElementById('units').value;
-if(!bill || !units){alert('Bill aur Units dalo bhai!');return;}
+let type = document.querySelector('input[name="type"]:checked').value;
+if(!bill || !units){alert('Bhai pehle Bill aur Units dalo!');return;}
 let kw = (units / 120).toFixed(1);
 let panels = Math.ceil(kw * 1000 / 585);
-let cost = Math.round(kw * 210000);
-let saving = Math.round(bill * 0.90);
+let perKw = 185000;
+let sysName = "On-Grid System";
+if(type==="hybrid"){perKw=265000; sysName="Hybrid System (With Battery)";}
+if(type==="offgrid"){perKw=335000; sysName="Off-Grid System (Full Battery)";}
+let cost = Math.round(kw * perKw);
+let saving = Math.round(bill * 0.92);
+if(type==="offgrid") saving = Math.round(bill * 1.0);
 let payback = (cost / (saving*12)).toFixed(1);
-document.getElementById('kw').innerText = kw;
-document.getElementById('panels').innerText = panels;
-document.getElementById('cost').innerText = cost.toLocaleString();
-document.getElementById('saving').innerText = saving.toLocaleString();
-document.getElementById('payback').innerText = payback;
+document.getElementById('sysName').innerText = sysName;
+document.getElementById('kw').innerText = kw + " kW";
+document.getElementById('panels').innerText = panels + " Panels";
+document.getElementById('inv').innerText = Math.ceil(kw) + " kW";
+document.getElementById('cost').innerText = "Rs " + cost.toLocaleString();
+document.getElementById('saving').innerText = "Rs " + saving.toLocaleString();
+document.getElementById('payback').innerText = payback + " Years";
 document.getElementById('result').style.display='block';
 }
 </script>
